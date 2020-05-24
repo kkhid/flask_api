@@ -1,49 +1,34 @@
 # flask_api
-
-## required
+## install required
 ```
-pip install flask
-```
-
----
-## GET TEST
-### Nomal
-```
-curl localhost:5000?name='World'
-```
-```
-curl localhost:5000?name='Taro'\&age=88
+pip install -r requirements.txt
 ```
 
-### Error
+## flask run
 ```
-curl -i localhost:5000
+export FLASK_APP=flask_api.py
+flask run
 ```
+
+## gunicorn run
 ```
-curl -i localhost:5000?name=
-```
-```
-curl -i localhost:5000?name='Taro'\&age=aaa
+gunicorn flask_api:app -b 0.0.0.0:5000
 ```
 
 ---
 
-## POST
-### Nomal
+## docker build
 ```
-curl -X POST localhost:5000
+docker build -t flask_api:v1 .
 ```
+## docker run
 ```
-curl -X POST localhost:5000?q_param=100
-```
-```
-curl -X POST localhost:5000 -d f_param=form_parameter
-```
-```
-curl -X POST localhost:5000?q_param=100 -d f_param=form_parameter
+docker run -d -p 5000:5000 flask_api:v1
 ```
 
-### Error
+---
+
+## docker-compose run
 ```
-curl -X POST localhost:5000?q_param=query -d f_param=form_parameter
+docker-compose up -d
 ```
