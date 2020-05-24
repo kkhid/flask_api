@@ -3,7 +3,7 @@ FROM ubuntu:latest
 RUN mkdir -p /app/config
 
 COPY flask_api.py /app/flask_api.py
-COPY config /app/config
+COPY requirements.txt /app/config
 
 RUN apt update -y
 RUN apt install python3 -y
